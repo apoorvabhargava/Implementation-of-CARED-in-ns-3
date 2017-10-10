@@ -470,7 +470,7 @@ RedQueueDisc::InitializeParams (void)
       m_isAdaptMaxP = true;
     }
 
-  if (m_isRARED)
+  if (m_isCARED)
     {
       // Set m_minTh, m_maxTh and m_qW to zero for automatic setting
       m_minTh = 0;
