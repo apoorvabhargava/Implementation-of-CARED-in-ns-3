@@ -109,29 +109,16 @@ TypeId RedQueueDisc::GetTypeId (void)
                    BooleanValue (false),
                    MakeBooleanAccessor (&RedQueueDisc::m_isARED),
                    MakeBooleanChecker ())
+    .AddAttribute ("CARED"
+                   "True to enable CARED",
+                   BooleanValue (false),
+                   MakeBooleanAccessor (&RedQueueDisc::m_isCARED),
+                   MakeBooleanChecker ())
     .AddAttribute ("AdaptMaxP",
                    "True to adapt m_curMaxP",
                    BooleanValue (false),
                    MakeBooleanAccessor (&RedQueueDisc::m_isAdaptMaxP),
                    MakeBooleanChecker ())
-    .AddAttribute ("FengAdaptive",
-                   "True to enable Feng's Adaptive RED",
-                   BooleanValue (false),
-                   MakeBooleanAccessor (&RedQueueDisc::m_isFengAdaptive),
-                   MakeBooleanChecker ())
-    .AddAttribute ("NLRED",
-                   "True to enable Nonlinear RED",
-                   BooleanValue (false),
-                   MakeBooleanAccessor (&RedQueueDisc::m_isNonlinear),
-                   MakeBooleanChecker ())
-
-
-   .AddAttribute ("CARED",
-                   "True to enable Cautious Adaptive RED",
-                   BooleanValue (false),
-                   MakeBooleanAccessor (&RedQueueDisc::m_isCARED),
-                   MakeBooleanChecker ())
-
     .AddAttribute ("MinTh",
                    "Minimum average length threshold in packets/bytes",
                    DoubleValue (5),
@@ -187,16 +174,6 @@ TypeId RedQueueDisc::GetTypeId (void)
                    DoubleValue (0.9),
                    MakeDoubleAccessor (&RedQueueDisc::SetAredBeta),
                    MakeDoubleChecker <double> (0, 1))
-    .AddAttribute ("FengAlpha",
-                   "Decrement parameter for m_curMaxP in Feng's Adaptive RED",
-                   DoubleValue (3.0),
-                   MakeDoubleAccessor (&RedQueueDisc::SetFengAdaptiveA),
-                   MakeDoubleChecker <double> ())
-    .AddAttribute ("FengBeta",
-                   "Increment parameter for m_curMaxP in Feng's Adaptive RED",
-                   DoubleValue (2.0),
-                   MakeDoubleAccessor (&RedQueueDisc::SetFengAdaptiveB),
-                   MakeDoubleChecker <double> ())
     .AddAttribute ("LastSet",
                    "Store the last time m_curMaxP was updated",
                    TimeValue (Seconds (0.0)),
@@ -310,44 +287,6 @@ RedQueueDisc::GetAredBeta (void)
 }
 
 void
-RedQueueDisc::SetFengAdaptiveA (double a)
-{
-  NS_LOG_FUNCTION (this << a);
-  m_a = a;
-
-  if (m_a != 3)
-    {
-      NS_LOG_WARN ("Alpha value does not follow the recommendations!");
-    }
-}
-
-double
-RedQueueDisc::GetFengAdaptiveA (void)
-{
-  NS_LOG_FUNCTION (this);
-  return m_a;
-}
-
-void
-RedQueueDisc::SetFengAdaptiveB (double b)
-{
-  NS_LOG_FUNCTION (this << b);
-  m_b = b;
-
-  if (m_b != 2)
-    {
-      NS_LOG_WARN ("Beta value does not follow the recommendations!");
-    }
-}
-
-double
-RedQueueDisc::GetFengAdaptiveB (void)
-{
-  NS_LOG_FUNCTION (this);
-  return m_b;
-}
-
-void
 RedQueueDisc::SetQueueLimit (uint32_t lim)
 {
   NS_LOG_FUNCTION (this << lim);
@@ -438,9 +377,9 @@ RedQueueDisc::DoEnqueue (Ptr<QueueDiscItem> item)
         {
           /* 
            * The average queue size has just crossed the
-           * threshold from below to above m_minTh, or
-           * from above m_minTh with an empty queue to
-           * above m_minTh with a nonempty queue.
+           * threshold from below to above "minthresh", or
+           * from above "minthresh" with an empty queue to
+           * above "minthresh" with a nonempty queue.
            */
           m_count = 1;
           m_countBytes = item->GetSize ();
@@ -531,10 +470,12 @@ RedQueueDisc::InitializeParams (void)
       m_isAdaptMaxP = true;
     }
 
-  if (m_isFengAdaptive)
+  if (m_isRARED)
     {
-      // Initialize m_fengStatus
-      m_fengStatus = Above;
+      // Set m_minTh, m_maxTh and m_qW to zero for automatic setting
+      m_minTh = 0;
+      m_maxTh = 0;
+      m_qW = 0;
     }
 
   if (m_minTh == 0 && m_maxTh == 0)
@@ -640,30 +581,6 @@ RedQueueDisc::InitializeParams (void)
                              << m_vC << "; m_vD " <<  m_vD);
 }
 
-// Updating m_curMaxP, following the pseudocode
-// from: A Self-Configuring RED Gateway, INFOCOMM '99.
-// They recommend m_a = 3, and m_b = 2.
-void
-RedQueueDisc::UpdateMaxPFeng (double newAve)
-{
-  NS_LOG_FUNCTION (this << newAve);
-
-  if (m_minTh < newAve && newAve < m_maxTh)
-    {
-      m_fengStatus = Between;
-    }
-  else if (newAve < m_minTh && m_fengStatus != Below)
-    {
-      m_fengStatus = Below;
-      m_curMaxP = m_curMaxP / m_a;
-    }
-  else if (newAve > m_maxTh && m_fengStatus != Above)
-    {
-      m_fengStatus = Above;
-      m_curMaxP = m_curMaxP * m_b;
-    }
-}
-
 // Update m_curMaxP to keep the average queue length within the target range.
 void
 RedQueueDisc::UpdateMaxP (double newAve)
@@ -692,6 +609,52 @@ RedQueueDisc::UpdateMaxP (double newAve)
     }
 }
 
+// Update m_curMaxP to keep the average queue size near the specified target queue size
+void
+RedQueueDisc::UpdateMaxPCautious (double newAve)
+{
+  NS_LOG_FUNCTION (this << newAve);
+
+  Time now = Simulator::Now ();
+  double m_part_low = 0.4 * (m_maxTh - m_minTh);
+  double m_part_up  = 0.6 * (m_maxTh - m_minTh);
+  if(newAve < m_minTh + m_part && m_curMaxP > m_bottom)
+  {
+     if(newAve > m_old)
+     {
+        m_curMaxP = m_curMaxP * m_beta;
+        m_lastSet = now;
+     }
+     else if(newAve < m_old)
+     {
+        m_beta = 1 - (0.17 * (((m_minTh + m_part_low) - newAve) / ((m_minTh + m_part) - m_minTh)));
+        m_curMaxP = m_curMaxP * m_beta;
+        m_lastSet = now;
+     }
+  }
+
+  else if (newAve > m_maxTh - m_part && m_top > m_curMaxP)
+  {
+    if(newAve > m_old)
+    {
+       double alpha = m_alpha;
+       alpha = 0.25 * ((newAve - (m_maxTh - m_part_up)) / (m_maxTh - m_part_up)) * m_curMaxP;
+       m_curMaxP = m_curMaxP + alpha;
+       m_lastSet = now;
+    }
+    else if(newAve < m_old)
+    {
+       double alpha = m_alpha;
+       if (alpha > 0.25 * m_curMaxP)
+       {
+         alpha = 0.25 * m_curMaxP;
+       }
+       m_curMaxP = m_curMaxP + alpha;
+       m_lastSet = now;  
+    }
+  }
+}
+
 // Compute the average queue size
 double
 RedQueueDisc::Estimator (uint32_t nQueued, uint32_t m, double qAvg, double qW)
@@ -702,13 +665,13 @@ RedQueueDisc::Estimator (uint32_t nQueued, uint32_t m, double qAvg, double qW)
   newAve += qW * nQueued;
 
   Time now = Simulator::Now ();
+  if (m_isRARED && now > m_lastSet + m_interval)
+    {
+      UpdateMaxPRefined(newAve);
+    }
   if (m_isAdaptMaxP && now > m_lastSet + m_interval)
     {
-      UpdateMaxP (newAve);
-    }
-  else if (m_isFengAdaptive)
-    {
-      UpdateMaxPFeng (newAve);  // Update m_curMaxP in MIMD fashion.
+      UpdateMaxP(newAve);
     }
 
   return newAve;
@@ -719,9 +682,8 @@ uint32_t
 RedQueueDisc::DropEarly (Ptr<QueueDiscItem> item, uint32_t qSize)
 {
   NS_LOG_FUNCTION (this << item << qSize);
-
-  double prob1 = CalculatePNew ();
-  m_vProb = ModifyP (prob1, item->GetSize ());
+  m_vProb1 = CalculatePNew (m_qAvg, m_maxTh, m_isGentle, m_vA, m_vB, m_vC, m_vD, m_curMaxP);
+  m_vProb = ModifyP (m_vProb1, m_count, m_countBytes, m_meanPktSize, m_isWait, item->GetSize ());
 
   // Drop probability is computed, pick random number and act
   if (m_cautious == 1)
@@ -778,22 +740,23 @@ RedQueueDisc::DropEarly (Ptr<QueueDiscItem> item, uint32_t qSize)
 
 // Returns a probability using these function parameters for the DropEarly funtion
 double
-RedQueueDisc::CalculatePNew (void)
+RedQueueDisc::CalculatePNew (double qAvg, double maxTh, bool isGentle, double vA,
+                         double vB, double vC, double vD, double maxP)
 {
-  NS_LOG_FUNCTION (this);
+  NS_LOG_FUNCTION (this << qAvg << maxTh << isGentle << vA << vB << vC << vD << maxP);
   double p;
 
-  if (m_isGentle && m_qAvg >= m_maxTh)
+  if (isGentle && qAvg >= maxTh)
     {
-      // p ranges from m_curMaxP to 1 as the average queue
-      // size ranges from m_maxTh to twice m_maxTh
-      p = m_vC * m_qAvg + m_vD;
+      // p ranges from maxP to 1 as the average queue
+      // Size ranges from maxTh to twice maxTh
+      p = vC * qAvg + vD;
     }
-  else if (!m_isGentle && m_qAvg >= m_maxTh)
+  else if (!isGentle && qAvg >= maxTh)
     {
       /* 
-       * OLD: p continues to range linearly above m_curMaxP as
-       * the average queue size ranges above m_maxTh.
+       * OLD: p continues to range linearly above max_p as
+       * the average queue size ranges above th_max.
        * NEW: p is set to 1.0
        */
       p = 1.0;
@@ -801,17 +764,11 @@ RedQueueDisc::CalculatePNew (void)
   else
     {
       /*
-       * p ranges from 0 to m_curMaxP as the average queue size ranges from
-       * m_minTh to m_maxTh
+       * p ranges from 0 to max_p as the average queue size ranges from
+       * th_min to th_max
        */
-      p = m_vA * m_qAvg + m_vB;
-
-      if (m_isNonlinear)
-        {
-          p *= p * 1.5;
-        }
-
-      p *= m_curMaxP;
+      p = vA * qAvg + vB;
+      p *= maxP;
     }
 
   if (p > 1.0)
@@ -824,17 +781,18 @@ RedQueueDisc::CalculatePNew (void)
 
 // Returns a probability using these function parameters for the DropEarly funtion
 double 
-RedQueueDisc::ModifyP (double p, uint32_t size)
+RedQueueDisc::ModifyP (double p, uint32_t count, uint32_t countBytes,
+                   uint32_t meanPktSize, bool isWait, uint32_t size)
 {
-  NS_LOG_FUNCTION (this << p << size);
-  double count1 = (double) m_count;
+  NS_LOG_FUNCTION (this << p << count << countBytes << meanPktSize << isWait << size);
+  double count1 = (double) count;
 
   if (GetMode () == QUEUE_DISC_MODE_BYTES)
     {
-      count1 = (double) (m_countBytes / m_meanPktSize);
+      count1 = (double) (countBytes / meanPktSize);
     }
 
-  if (m_isWait)
+  if (isWait)
     {
       if (count1 * p < 1.0)
         {
@@ -863,7 +821,7 @@ RedQueueDisc::ModifyP (double p, uint32_t size)
 
   if ((GetMode () == QUEUE_DISC_MODE_BYTES) && (p < 1.0))
     {
-      p = (p * size) / m_meanPktSize;
+      p = (p * size) / meanPktSize;
     }
 
   if (p > 1.0)
@@ -986,11 +944,6 @@ RedQueueDisc::CheckConfig (void)
     {
       NS_LOG_ERROR ("The size of the internal queue is less than the queue disc limit");
       return false;
-    }
-
-  if ((m_isARED || m_isAdaptMaxP) && m_isFengAdaptive)
-    {
-      NS_LOG_ERROR ("m_isAdaptMaxP and m_isFengAdaptive cannot be simultaneously true");
     }
 
   return true;
