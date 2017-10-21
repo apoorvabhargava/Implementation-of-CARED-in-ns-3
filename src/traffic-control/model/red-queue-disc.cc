@@ -740,7 +740,10 @@ RedQueueDisc::Estimator (uint32_t nQueued, uint32_t m, double qAvg, double qW)
     {
       UpdateMaxPFeng (newAve);  // Update m_curMaxP in MIMD fashion.
     }
-
+  else if (m_isCARED && now > m_lastSet + m_interval)
+    {
+      UpdateMaxPCautious (newAve);
+    }
   return newAve;
 }
 
