@@ -714,7 +714,7 @@ RedQueueDisc::UpdateMaxPCautious (double newAve)
        double alpha = m_alpha;
        if (alpha > 0.25 * m_curMaxP)
        {
-         alpha = 0.25 * m_curMaxP;
+         alpha = std::min (m_bottom , 0.25 * m_curMaxP);
        }
        m_curMaxP = m_curMaxP + alpha;
        m_lastSet = now;  
