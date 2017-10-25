@@ -685,7 +685,7 @@ RedQueueDisc::UpdateMaxPCautious (double newAve)
   Time now = Simulator::Now ();
   double part_low = 0.4 * (m_maxTh - m_minTh);
   double part_up  = 0.6 * (m_maxTh - m_minTh);
-  if(newAve < m_minTh + m_part && m_curMaxP > m_bottom)
+  if(newAve < m_minTh + part_low && m_curMaxP > m_bottom)
   {
      if(newAve > m_old)
      {
@@ -694,18 +694,18 @@ RedQueueDisc::UpdateMaxPCautious (double newAve)
      }
      else if(newAve < m_old)
      {
-        m_beta = 1 - (0.17 * (((m_minTh + part_low) - newAve) / ((m_minTh + part) - m_minTh)));
+        m_beta = 1 - (0.17 * (((m_minTh + part_low) - newAve) / ((m_minTh + part_low) - m_minTh)));
         m_curMaxP = m_curMaxP * m_beta;
         m_lastSet = now;
      }
   }
 
-  else if (newAve > m_maxTh - part && m_top > m_curMaxP)
+  else if (newAve > m_minTh + part_up && m_top >= m_curMaxP)
   {
     if(newAve > m_old)
     {
        double alpha = m_alpha;
-       alpha = 0.25 * ((newAve - (m_maxTh - part_up)) / (m_maxTh - part_up)) * m_curMaxP;
+       alpha = 0.25 * ((newAve - (m_minTh + part_up)) / (m_minTh + part_up)) * m_curMaxP;
        m_curMaxP = m_curMaxP + alpha;
        m_lastSet = now;
     }
