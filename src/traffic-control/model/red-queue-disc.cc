@@ -1021,7 +1021,7 @@ RedQueueDisc::CheckConfig (void)
       return false;
     }
 
-  if ((m_isARED || m_isAdaptMaxP) && (m_isFengAdaptive || m_isCARED) || (m_isFengAdaptive && m_isCARED))
+  if (((m_isARED || m_isAdaptMaxP) && (m_isFengAdaptive || m_isCARED)) || (m_isFengAdaptive && m_isCARED))
     {
       NS_LOG_ERROR ("m_isAdaptMaxP, m_isFengAdaptive and m_CARED cannot be simultaneously true");
     }
