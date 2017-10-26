@@ -124,7 +124,7 @@ TypeId RedQueueDisc::GetTypeId (void)
                    BooleanValue (false),
                    MakeBooleanAccessor (&RedQueueDisc::m_isNonlinear),
                    MakeBooleanChecker ())
-    .AddAttribute ("CARED"
+    .AddAttribute ("CARED",
                    "True to enable CARED",
                    BooleanValue (false),
                    MakeBooleanAccessor (&RedQueueDisc::m_isCARED),
