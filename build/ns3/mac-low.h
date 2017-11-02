@@ -716,16 +716,6 @@ private:
    */
   WifiTxVector GetBlockAckTxVector (Mac48Address to, WifiMode dataTxMode) const;
   /**
-   * Return a TXVECTOR for the CTS-to-self frame.
-   * The function consults WifiRemoteStationManager, which controls the rate
-   * to different destinations.
-   *
-   * \param packet the packet that requires CTS-to-self
-   * \param hdr the Wifi header of the packet
-   * \return TXVECTOR for the CTS-to-self operation
-   */
-  WifiTxVector GetCtsToSelfTxVector (Ptr<const Packet> packet, const WifiMacHeader *hdr) const;
-  /**
    * Return a TXVECTOR for the CTS frame given the destination and the mode of the RTS
    * used by the sender.
    * The function consults WifiRemoteStationManager, which controls the rate
@@ -1096,12 +1086,12 @@ private:
   /**
    * A struct for packet, Wifi header, and timestamp.
    */
-  typedef struct
+  struct Item
   {
     Ptr<const Packet> packet; //!< the packet
     WifiMacHeader hdr; //!< the header
     Time timestamp; //!< the timestamp
-  } Item; //!< item structure
+  }; //!< item structure
 
   /**
    * typedef for an iterator for a list of DcfManager.

@@ -1,16 +1,16 @@
-# project ns (3-dev) configured on Sat Sep  2 01:09:00 2017 by
-# waf 1.8.19 (abi 98, python 2070cf0 on linux2)
-# using ./waf configure --build-profile=debug --enable-examples --enable-tests
+# project ns (3-dev) configured on Thu Nov  2 19:44:59 2017 by
+# waf 1.8.19 (abi 98, python 30602f0 on linux)
+# using ./waf configure
 #
 ----------------------------------------
 Setting top to
-/home/mansi/Desktop/ns-3-dev
+/home/mansi/Desktop/Implementation-of-CARED-in-ns3
 ----------------------------------------
 Setting out to
-/home/mansi/Desktop/ns-3-dev/build
+/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build
 ----------------------------------------
 Checking for 'gcc' (C compiler)
-find program=['gcc', 'cc'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CC' -> ['/usr/bin/gcc']
+find program=['gcc', 'cc'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CC' -> ['/usr/bin/gcc']
 ['/usr/bin/gcc', '-dM', '-E', '-']
 out: #define __SSP_STRONG__ 3
 #define __DBL_MIN_EXP__ (-1021)
@@ -261,14 +261,14 @@ out: #define __SSP_STRONG__ 3
 #define __ATOMIC_ACQ_REL 4
 #define __ATOMIC_RELEASE 3
 
-find program=['ar'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
+find program=['ar'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
 /usr/bin/gcc
 ----------------------------------------
 Checking for cc version
 5.4.0
 ----------------------------------------
 Checking for 'g++' (C++ compiler)
-find program=['g++', 'c++'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CXX' -> ['/usr/bin/g++']
+find program=['g++', 'c++'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CXX' -> ['/usr/bin/g++']
 ['/usr/bin/g++', '-dM', '-E', '-']
 out: #define __SSP_STRONG__ 3
 #define __DBL_MIN_EXP__ (-1021)
@@ -526,87 +526,85 @@ Checking for compilation flag -Wl,--soname=foo support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_795a703f402728d610a1a054f4995186/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_48ed471a1718592c90d610f5959b7951/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-Wl,--soname=foo', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_795a703f402728d610a1a054f4995186/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-Wl,--soname=foo', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_48ed471a1718592c90d610f5959b7951/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------
 Checking for program 'python'
-/usr/bin/python
-find program=['python'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python']
-['/usr/bin/python', '-c', 'import imp;print(imp.get_tag())']
-err: Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-AttributeError: 'module' object has no attribute 'get_tag'
+/home/mansi/anaconda3/bin/python
+find program=['python'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON' -> ['/home/mansi/anaconda3/bin/python']
+['/home/mansi/anaconda3/bin/python', '-c', 'import imp;print(imp.get_tag())']
+out: cpython-36
 
-['/usr/bin/python', '-c', 'import sys\nfor x in sys.version_info: print(str(x))']
-out: 2
-7
-12
+['/home/mansi/anaconda3/bin/python', '-c', 'import sys\nfor x in sys.version_info: print(str(x))']
+out: 3
+6
+2
 final
 0
 
-['/usr/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(standard_lib=0, prefix='/usr/local') or ''))"]
-out: '/usr/local/lib/python2.7/dist-packages'
+['/home/mansi/anaconda3/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(standard_lib=0, prefix='/usr/local') or ''))"]
+out: '/usr/local/lib/python3.6/site-packages'
 
-'/usr/local/lib/python2.7/dist-packages'
+'/usr/local/lib/python3.6/site-packages'
 
-['/usr/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(plat_specific=1, standard_lib=0, prefix='/usr/local') or ''))"]
-out: '/usr/local/lib/python2.7/dist-packages'
+['/home/mansi/anaconda3/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(plat_specific=1, standard_lib=0, prefix='/usr/local') or ''))"]
+out: '/usr/local/lib/python3.6/site-packages'
 
-'/usr/local/lib/python2.7/dist-packages'
+'/usr/local/lib/python3.6/site-packages'
 
 ------------------------------------------------------
 Checking for python version
-(2, 7, 12, 'final', 0)
-['/usr/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_config_var('prefix') or ''))\nprint(repr(get_config_var('SO') or ''))\nprint(repr(get_config_var('LDFLAGS') or ''))\nprint(repr(get_config_var('LIBDIR') or ''))\nprint(repr(get_config_var('LIBPL') or ''))\nprint(repr(get_config_var('INCLUDEPY') or ''))\nprint(repr(get_config_var('Py_ENABLE_SHARED') or ''))\nprint(repr(get_config_var('MACOSX_DEPLOYMENT_TARGET') or ''))\nprint(repr(get_config_var('LDSHARED') or ''))\nprint(repr(get_config_var('CFLAGS') or ''))\nprint(repr(get_config_var('LDVERSION') or ''))"]
-out: '/usr'
-'.so'
-'-Wl,-Bsymbolic-functions -Wl,-z,relro'
-'/usr/lib'
-'/usr/lib/python2.7/config-x86_64-linux-gnu'
-'/usr/include/python2.7'
+(3, 6, 2, 'final', 0)
+['/home/mansi/anaconda3/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_config_var('prefix') or ''))\nprint(repr(get_config_var('SO') or ''))\nprint(repr(get_config_var('LDFLAGS') or ''))\nprint(repr(get_config_var('LIBDIR') or ''))\nprint(repr(get_config_var('LIBPL') or ''))\nprint(repr(get_config_var('INCLUDEPY') or ''))\nprint(repr(get_config_var('Py_ENABLE_SHARED') or ''))\nprint(repr(get_config_var('MACOSX_DEPLOYMENT_TARGET') or ''))\nprint(repr(get_config_var('LDSHARED') or ''))\nprint(repr(get_config_var('CFLAGS') or ''))\nprint(repr(get_config_var('LDVERSION') or ''))"]
+out: '/home/mansi/anaconda3'
+'.cpython-36m-x86_64-linux-gnu.so'
+'-L/home/mansi/anaconda3/lib -Wl,-rpath=/home/mansi/anaconda3/lib,--no-as-needed'
+'/home/mansi/anaconda3/lib'
+'/home/mansi/anaconda3/lib/python3.6/config-3.6m-x86_64-linux-gnu'
+'/home/mansi/anaconda3/include/python3.6m'
 1
 ''
-'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
-'-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
-''
+'gcc -pthread -shared  -B /home/mansi/anaconda3/compiler_compat -L/home/mansi/anaconda3/lib -Wl,-rpath=/home/mansi/anaconda3/lib,--no-as-needed'
+'-Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes'
+'3.6m'
 
-'/usr'
-'.so'
-'-Wl,-Bsymbolic-functions -Wl,-z,relro'
-'/usr/lib'
-'/usr/lib/python2.7/config-x86_64-linux-gnu'
-'/usr/include/python2.7'
+'/home/mansi/anaconda3'
+'.cpython-36m-x86_64-linux-gnu.so'
+'-L/home/mansi/anaconda3/lib -Wl,-rpath=/home/mansi/anaconda3/lib,--no-as-needed'
+'/home/mansi/anaconda3/lib'
+'/home/mansi/anaconda3/lib/python3.6/config-3.6m-x86_64-linux-gnu'
+'/home/mansi/anaconda3/include/python3.6m'
 1
 ''
-'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
-'-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
-''
+'gcc -pthread -shared  -B /home/mansi/anaconda3/compiler_compat -L/home/mansi/anaconda3/lib -Wl,-rpath=/home/mansi/anaconda3/lib,--no-as-needed'
+'-Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes'
+'3.6m'
 
-Configuration returned from ['/usr/bin/python']:
-prefix = '/usr'
-SO = '.so'
-LDFLAGS = '-Wl,-Bsymbolic-functions -Wl,-z,relro'
-LIBDIR = '/usr/lib'
-LIBPL = '/usr/lib/python2.7/config-x86_64-linux-gnu'
-INCLUDEPY = '/usr/include/python2.7'
+Configuration returned from ['/home/mansi/anaconda3/bin/python']:
+prefix = '/home/mansi/anaconda3'
+SO = '.cpython-36m-x86_64-linux-gnu.so'
+LDFLAGS = '-L/home/mansi/anaconda3/lib -Wl,-rpath=/home/mansi/anaconda3/lib,--no-as-needed'
+LIBDIR = '/home/mansi/anaconda3/lib'
+LIBPL = '/home/mansi/anaconda3/lib/python3.6/config-3.6m-x86_64-linux-gnu'
+INCLUDEPY = '/home/mansi/anaconda3/include/python3.6m'
 Py_ENABLE_SHARED = 1
 MACOSX_DEPLOYMENT_TARGET = ''
-LDSHARED = 'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
-CFLAGS = '-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
-LDVERSION = ''
+LDSHARED = 'gcc -pthread -shared  -B /home/mansi/anaconda3/compiler_compat -L/home/mansi/anaconda3/lib -Wl,-rpath=/home/mansi/anaconda3/lib,--no-as-needed'
+CFLAGS = '-Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes'
+LDVERSION = '3.6m'
 
 ------------------------------------------------------
 python-config
-/usr/bin/python-config
-find program=['/usr/bin/python-config', 'python2.7-config', 'python-config-2.7', 'python2.7m-config'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON_CONFIG' -> ['/usr/bin/python-config']
+/home/mansi/anaconda3/bin/python3.6-config
+find program=['/home/mansi/anaconda3/bin/python-config', 'python3.6-config', 'python-config-3.6', 'python3.6m-config'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON_CONFIG' -> ['/home/mansi/anaconda3/bin/python3.6-config']
 ------------------------------------------------------------------
 Asking python-config for pyembed '--cflags --libs --ldflags' flags
-['/usr/bin/python-config', '--cflags', '--libs', '--ldflags']
-out: -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
--lpython2.7 -lpthread -ldl  -lutil -lm 
--L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpython2.7 -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
+['/home/mansi/anaconda3/bin/python3.6-config', '--cflags', '--libs', '--ldflags']
+out: -I/home/mansi/anaconda3/include/python3.6m -I/home/mansi/anaconda3/include/python3.6m  -Wno-unused-result -Wsign-compare -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O3 -pipe -flto -fuse-linker-plugin -ffat-lto-objects -DNDEBUG -fwrapv -O3 -Wall -Wstrict-prototypes
+-lpython3.6m -lpthread -ldl  -lutil -lrt -lm 
+-L/home/mansi/anaconda3/lib/python3.6/config-3.6m-x86_64-linux-gnu -L/home/mansi/anaconda3/lib -lpython3.6m -lpthread -ldl  -lutil -lrt -lm  -Xlinker -export-dynamic
 
 yes
 ------------------------------------------------------------------
@@ -631,23 +629,25 @@ int main(int argc, char **argv)
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_b9d6933062dd560d4b432c94c1def070/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_2251d2012759a5efb114cd1ca941b717/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fno-strict-aliasing', '-fstack-protector-strong', '-fwrapv', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_b9d6933062dd560d4b432c94c1def070/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_b9d6933062dd560d4b432c94c1def070/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-march=nocona', '-mtune=haswell', '-ftree-vectorize', '-fPIC', '-fstack-protector-strong', '-fno-plt', '-flto', '-fuse-linker-plugin', '-ffat-lto-objects', '-fwrapv', '-I/home/mansi/anaconda3/include/python3.6m', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3.6/site-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3.6/site-packages"', '-DHAVE_PYEMBED=1', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2251d2012759a5efb114cd1ca941b717/testbuild/test.cpp.1.o']
+err: g++: error: unrecognized command line option ‘-fno-plt’
 
-['/usr/bin/g++', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_b9d6933062dd560d4b432c94c1def070/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
-yes
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/bindings/python: Test does not build: Traceback (most recent call last):
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+    bld.compile()
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+    raise Errors.BuildError(self.producer.error)
+waflib.Errors.BuildError: Build failed
+ -> task in 'testprog' failed (exit status 1): 
+	{task 139630979399976: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-march=nocona', '-mtune=haswell', '-ftree-vectorize', '-fPIC', '-fstack-protector-strong', '-fno-plt', '-flto', '-fuse-linker-plugin', '-ffat-lto-objects', '-fwrapv', '-I/home/mansi/anaconda3/include/python3.6m', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3.6/site-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3.6/site-packages"', '-DHAVE_PYEMBED=1', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2251d2012759a5efb114cd1ca941b717/testbuild/test.cpp.1.o']
+
+Could not build a python embedded interpreter
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/bindings/python: The configuration failed
 ------------------------------------------------------------------
-Asking python-config for pyext '--cflags --libs --ldflags' flags
-['/usr/bin/python-config', '--cflags', '--libs', '--ldflags']
-out: -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
--lpython2.7 -lpthread -ldl  -lutil -lm 
--L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpython2.7 -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
-
-yes
-------------------------------------------------------------------
-Testing pyext configuration
+Testing pyembed configuration
 ==>
 
 #include <Python.h>
@@ -668,68 +668,101 @@ int main(int argc, char **argv)
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_12a97467b40b63045f5c2f798be9d2b9/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_2251d2012759a5efb114cd1ca941b717/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fPIC', '-fno-strict-aliasing', '-fstack-protector-strong', '-fwrapv', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_12a97467b40b63045f5c2f798be9d2b9/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_12a97467b40b63045f5c2f798be9d2b9/testbuild/testprog.so[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-march=nocona', '-mtune=haswell', '-ftree-vectorize', '-fPIC', '-fstack-protector-strong', '-fno-plt', '-flto', '-fuse-linker-plugin', '-ffat-lto-objects', '-fwrapv', '-I/home/mansi/anaconda3/include/python3.6m', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3.6/site-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3.6/site-packages"', '-DHAVE_PYEMBED=1', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2251d2012759a5efb114cd1ca941b717/testbuild/test.cpp.1.o']
+err: g++: error: unrecognized command line option ‘-fno-plt’
 
-['/usr/bin/g++', '-shared', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_12a97467b40b63045f5c2f798be9d2b9/testbuild/testprog.so', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
-yes
-------------------------------------------------------------------
-Checking for compilation flag -fvisibility=hidden support
-==>
-int main() { return 0; }
-<==
-[1/1] Compiling [32mbuild/.conf_check_795a703f402728d610a1a054f4995186/test.cpp[0m
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/bindings/python: Test does not build: Traceback (most recent call last):
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+    bld.compile()
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+    raise Errors.BuildError(self.producer.error)
+waflib.Errors.BuildError: Build failed
+ -> task in 'testprog' failed (exit status 1): 
+	{task 139630979399976: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-march=nocona', '-mtune=haswell', '-ftree-vectorize', '-fPIC', '-fstack-protector-strong', '-fno-plt', '-flto', '-fuse-linker-plugin', '-ffat-lto-objects', '-fwrapv', '-I/home/mansi/anaconda3/include/python3.6m', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3.6/site-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3.6/site-packages"', '-DHAVE_PYEMBED=1', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2251d2012759a5efb114cd1ca941b717/testbuild/test.cpp.1.o']
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fvisibility=hidden', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_795a703f402728d610a1a054f4995186/testbuild/test.cpp.1.o']
-ok
-------------------------------------------------------------------
-Checking for compilation flag -Wno-array-bounds support
-==>
-int main() { return 0; }
-<==
-[1/1] Compiling [32mbuild/.conf_check_795a703f402728d610a1a054f4995186/test.cpp[0m
+During handling of the above exception, another exception occurred:
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-array-bounds', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_795a703f402728d610a1a054f4995186/testbuild/test.cpp.1.o']
-ok
-------------------------------------------------------------------
-Checking for pybindgen location
-not found
-------------------------------------------------------------------
-Checking for python module 'pybindgen'
-['/usr/bin/python', '-c', "\nimport pybindgen as current_module\nversion = getattr(current_module, '__version__', None)\nif version is not None:\n\tprint(str(version))\nelse:\n\tprint('unknown version')\n"]
-err: Traceback (most recent call last):
-  File "<string>", line 2, in <module>
-ImportError: No module named pybindgen
+Traceback (most recent call last):
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Tools/c_config.py", line 424, in check
+    ret=self.run_build(*k,**kw)
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 184, in fun
+    return f(*k,**kw)
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 338, in run_build
+    self.fatal(ret)
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Context.py", line 253, in fatal
+    raise self.errors.ConfigurationError(msg,ex=ex)
+waflib.Errors.ConfigurationError: Test does not build: Traceback (most recent call last):
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+    bld.compile()
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+    raise Errors.BuildError(self.producer.error)
+waflib.Errors.BuildError: Build failed
+ -> task in 'testprog' failed (exit status 1): 
+	{task 139630979399976: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-march=nocona', '-mtune=haswell', '-ftree-vectorize', '-fPIC', '-fstack-protector-strong', '-fno-plt', '-flto', '-fuse-linker-plugin', '-ffat-lto-objects', '-fwrapv', '-I/home/mansi/anaconda3/include/python3.6m', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3.6/site-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3.6/site-packages"', '-DHAVE_PYEMBED=1', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2251d2012759a5efb114cd1ca941b717/testbuild/test.cpp.1.o']
 
-not found
-from /home/mansi/Desktop/ns-3-dev/bindings/python: Could not find the python module 'pybindgen'
+(complete log in /home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/config.log)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Tools/python.py", line 216, in check_python_headers
+    conf.test_pyembed(xx)
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 184, in fun
+    return f(*k,**kw)
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Tools/python.py", line 149, in test_pyembed
+    self.check(header_name='Python.h',define_name='HAVE_PYEMBED',msg=msg,fragment=FRAG,errmsg='Could not build a python embedded interpreter',features='%s %sprogram pyembed'%(mode,mode))
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 184, in fun
+    return f(*k,**kw)
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Tools/c_config.py", line 430, in check
+    self.fatal('The configuration failed')
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Context.py", line 253, in fatal
+    raise self.errors.ConfigurationError(msg,ex=ex)
+waflib.Errors.ConfigurationError: The configuration failed
+(complete log in /home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/config.log)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+    bld.compile()
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+    raise Errors.BuildError(self.producer.error)
+waflib.Errors.BuildError: Build failed
+ -> task in 'testprog' failed (exit status 1): 
+	{task 139630977454656: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-march=nocona', '-mtune=haswell', '-ftree-vectorize', '-fPIC', '-fstack-protector-strong', '-fno-plt', '-flto', '-fuse-linker-plugin', '-ffat-lto-objects', '-fwrapv', '-I/home/mansi/anaconda3/include/python3.6m', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python3.6/site-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python3.6/site-packages"', '-DHAVE_PYEMBED=1', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2251d2012759a5efb114cd1ca941b717/testbuild/test.cpp.1.o']
+
+Could not build a python embedded interpreter
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/bindings/python: The configuration failed
 ------------------------------------------------------------------
 Checking boost includes
 headers not found, please provide a --boost-includes argument (see help)
-from /home/mansi/Desktop/ns-3-dev/src: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src: The configuration failed
 ------------------------------------------------------------------
 Checking boost includes
 headers not found, please provide a --boost-includes argument (see help)
-from /home/mansi/Desktop/ns-3-dev/src: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src: The configuration failed
 ------------------------------------------------------------------
 Checking for click location
 not found
 ------------------------------------------------------------------
 Checking for program 'pkg-config'
 /usr/bin/pkg-config
-find program=['pkg-config'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PKGCONFIG' -> ['/usr/bin/pkg-config']
+find program=['pkg-config'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PKGCONFIG' -> ['/usr/bin/pkg-config']
 ------------------------------------------------------------------
 Checking for 'gtk+-2.0' >= 2.12
 ['/usr/bin/pkg-config', '--atleast-version=2.12', 'gtk+-2.0']
 not found
-from /home/mansi/Desktop/ns-3-dev/src/config-store: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src/config-store: The configuration failed
 ------------------------------------------------------------------
 Checking for 'libxml-2.0' >= 2.7
 ['/usr/bin/pkg-config', '--atleast-version=2.7', 'libxml-2.0']
 not found
-from /home/mansi/Desktop/ns-3-dev/src/config-store: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src/config-store: The configuration failed
 ------------------------------------------------------------------
 Checking for type uint128_t
 ==>
@@ -743,9 +776,9 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_7dbde925e68d91e44706914da6e09571/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_d8ff44c2a76dc58849a8c15ebb7024c0/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_7dbde925e68d91e44706914da6e09571/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_d8ff44c2a76dc58849a8c15ebb7024c0/testbuild/test.cpp.1.o']
 err: ../test.cpp: In function ‘int main(int, char**)’:
 ../test.cpp:5:7: error: ‘uint128_t’ was not declared in this scope
   if ((uint128_t *) 0) return 0;
@@ -760,18 +793,18 @@ err: ../test.cpp: In function ‘int main(int, char**)’:
   if (sizeof (uint128_t)) return 0;
               ^
 
-from /home/mansi/Desktop/ns-3-dev/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/mansi/Desktop/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
     bld.compile()
-  File "/home/mansi/Desktop/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
     raise Errors.BuildError(self.producer.error)
-BuildError: Build failed
+waflib.Errors.BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140060364239376: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_7dbde925e68d91e44706914da6e09571/testbuild/test.cpp.1.o']
+	{task 139630977498808: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_d8ff44c2a76dc58849a8c15ebb7024c0/testbuild/test.cpp.1.o']
 
 not found
-from /home/mansi/Desktop/ns-3-dev/src/core: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src/core: The configuration failed
 ------------------------------------------------------------------
 Checking for type __uint128_t
 ==>
@@ -785,12 +818,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_32d4bac509034aa3b6505dccb5489bfd/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_ec9efd32412aeae2926e385944d46fa2/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_32d4bac509034aa3b6505dccb5489bfd/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_32d4bac509034aa3b6505dccb5489bfd/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_ec9efd32412aeae2926e385944d46fa2/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_ec9efd32412aeae2926e385944d46fa2/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_32d4bac509034aa3b6505dccb5489bfd/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_ec9efd32412aeae2926e385944d46fa2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking high precision implementation
@@ -806,12 +839,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_7bab58dc638b0a726e5ddf7f646a6fee/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_9dbcf1dbf00e14c6f3bf9698d4499c5e/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_7bab58dc638b0a726e5ddf7f646a6fee/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_7bab58dc638b0a726e5ddf7f646a6fee/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_9dbcf1dbf00e14c6f3bf9698d4499c5e/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_9dbcf1dbf00e14c6f3bf9698d4499c5e/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_7bab58dc638b0a726e5ddf7f646a6fee/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_9dbcf1dbf00e14c6f3bf9698d4499c5e/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header inttypes.h
@@ -824,12 +857,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_317d3e99b18a2633c30c91b176ef1185/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_187a7b0faffb2a33818f04ff84155fc8/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_317d3e99b18a2633c30c91b176ef1185/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_317d3e99b18a2633c30c91b176ef1185/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_187a7b0faffb2a33818f04ff84155fc8/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_187a7b0faffb2a33818f04ff84155fc8/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_317d3e99b18a2633c30c91b176ef1185/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_187a7b0faffb2a33818f04ff84155fc8/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header sys/inttypes.h
@@ -842,24 +875,24 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_2a357238b652bec684630deb0a5520ca/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_2f9c4f655426e5098e1ffdb7c83d56f3/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_2a357238b652bec684630deb0a5520ca/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2f9c4f655426e5098e1ffdb7c83d56f3/testbuild/test.cpp.1.o']
 err: ../test.cpp:1:26: fatal error: sys/inttypes.h: No such file or directory
 compilation terminated.
 
-from /home/mansi/Desktop/ns-3-dev/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/mansi/Desktop/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
     bld.compile()
-  File "/home/mansi/Desktop/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
     raise Errors.BuildError(self.producer.error)
-BuildError: Build failed
+waflib.Errors.BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140060364281808: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_2a357238b652bec684630deb0a5520ca/testbuild/test.cpp.1.o']
+	{task 139630979559832: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2f9c4f655426e5098e1ffdb7c83d56f3/testbuild/test.cpp.1.o']
 
 not found
-from /home/mansi/Desktop/ns-3-dev/src/core: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src/core: The configuration failed
 ------------------------------------------------------------------
 Checking for header sys/types.h
 ==>
@@ -871,12 +904,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_54d4eb961c26ebe9321e2a60cf64dff6/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_5a49e91f0b250c031ebcd2a5024f0b65/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_54d4eb961c26ebe9321e2a60cf64dff6/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_54d4eb961c26ebe9321e2a60cf64dff6/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_5a49e91f0b250c031ebcd2a5024f0b65/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_5a49e91f0b250c031ebcd2a5024f0b65/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_54d4eb961c26ebe9321e2a60cf64dff6/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_5a49e91f0b250c031ebcd2a5024f0b65/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header sys/stat.h
@@ -889,12 +922,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_6e1eb3d8a80d158654f008f458ed095c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1e5729705eca1f021fc563ff034d45f1/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_6e1eb3d8a80d158654f008f458ed095c/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_6e1eb3d8a80d158654f008f458ed095c/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_1e5729705eca1f021fc563ff034d45f1/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1e5729705eca1f021fc563ff034d45f1/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_6e1eb3d8a80d158654f008f458ed095c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_1e5729705eca1f021fc563ff034d45f1/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header dirent.h
@@ -907,12 +940,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_cf2c3eb3f5f8e5c934b330eec723fb1c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_36dea9a0a17ace6142dd42c6d2229b60/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_cf2c3eb3f5f8e5c934b330eec723fb1c/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_cf2c3eb3f5f8e5c934b330eec723fb1c/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_36dea9a0a17ace6142dd42c6d2229b60/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_36dea9a0a17ace6142dd42c6d2229b60/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_cf2c3eb3f5f8e5c934b330eec723fb1c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_36dea9a0a17ace6142dd42c6d2229b60/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header stdlib.h
@@ -925,12 +958,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_74cf817e055c21b53ef16e035b7f6946/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_08fc085cb3b0627950668af8369f52a7/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_74cf817e055c21b53ef16e035b7f6946/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_74cf817e055c21b53ef16e035b7f6946/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_08fc085cb3b0627950668af8369f52a7/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_08fc085cb3b0627950668af8369f52a7/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_74cf817e055c21b53ef16e035b7f6946/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_08fc085cb3b0627950668af8369f52a7/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header signal.h
@@ -943,12 +976,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_d6e35c3b8b96721f51e70df716e0621b/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_634544f853da63cc281a97c731490b05/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_d6e35c3b8b96721f51e70df716e0621b/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_d6e35c3b8b96721f51e70df716e0621b/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_634544f853da63cc281a97c731490b05/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_634544f853da63cc281a97c731490b05/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_d6e35c3b8b96721f51e70df716e0621b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_634544f853da63cc281a97c731490b05/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header pthread.h
@@ -963,12 +996,12 @@ int main ()
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_75fc48c444c1ca4bbdec2bdcf82547c9/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_9c1089756434079315384738cd792ff8/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_75fc48c444c1ca4bbdec2bdcf82547c9/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_75fc48c444c1ca4bbdec2bdcf82547c9/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_9c1089756434079315384738cd792ff8/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_9c1089756434079315384738cd792ff8/testbuild/testprog[0m
 
-['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_75fc48c444c1ca4bbdec2bdcf82547c9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_9c1089756434079315384738cd792ff8/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header stdint.h
@@ -981,12 +1014,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_7bab58dc638b0a726e5ddf7f646a6fee/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_9dbcf1dbf00e14c6f3bf9698d4499c5e/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_7bab58dc638b0a726e5ddf7f646a6fee/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_7bab58dc638b0a726e5ddf7f646a6fee/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_9dbcf1dbf00e14c6f3bf9698d4499c5e/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_9dbcf1dbf00e14c6f3bf9698d4499c5e/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_7bab58dc638b0a726e5ddf7f646a6fee/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_9dbcf1dbf00e14c6f3bf9698d4499c5e/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header inttypes.h
@@ -999,12 +1032,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_317d3e99b18a2633c30c91b176ef1185/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_187a7b0faffb2a33818f04ff84155fc8/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_317d3e99b18a2633c30c91b176ef1185/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_317d3e99b18a2633c30c91b176ef1185/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_187a7b0faffb2a33818f04ff84155fc8/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_187a7b0faffb2a33818f04ff84155fc8/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_317d3e99b18a2633c30c91b176ef1185/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_187a7b0faffb2a33818f04ff84155fc8/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header sys/inttypes.h
@@ -1017,24 +1050,24 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_2a357238b652bec684630deb0a5520ca/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_2f9c4f655426e5098e1ffdb7c83d56f3/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_2a357238b652bec684630deb0a5520ca/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2f9c4f655426e5098e1ffdb7c83d56f3/testbuild/test.cpp.1.o']
 err: ../test.cpp:1:26: fatal error: sys/inttypes.h: No such file or directory
 compilation terminated.
 
-from /home/mansi/Desktop/ns-3-dev/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/mansi/Desktop/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
     bld.compile()
-  File "/home/mansi/Desktop/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+  File "/home/mansi/Desktop/Implementation-of-CARED-in-ns3/.waf3-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
     raise Errors.BuildError(self.producer.error)
-BuildError: Build failed
+waflib.Errors.BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140060364400272: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_2a357238b652bec684630deb0a5520ca/testbuild/test.cpp.1.o']
+	{task 139630979221600: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_2f9c4f655426e5098e1ffdb7c83d56f3/testbuild/test.cpp.1.o']
 
 not found
-from /home/mansi/Desktop/ns-3-dev/src/core: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src/core: The configuration failed
 ------------------------------------------------------------------
 Checking for library rt
 ==>
@@ -1045,12 +1078,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_c0a4451e4695e736d7cbc71a7f0f5f58/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_d3be6cd314e60482beb0296b302bd5d9/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_c0a4451e4695e736d7cbc71a7f0f5f58/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_c0a4451e4695e736d7cbc71a7f0f5f58/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_d3be6cd314e60482beb0296b302bd5d9/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_d3be6cd314e60482beb0296b302bd5d9/testbuild/testprog[0m
 
-['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_c0a4451e4695e736d7cbc71a7f0f5f58/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
+['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_d3be6cd314e60482beb0296b302bd5d9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
 yes
 ------------------------------------------------------------------
 Checking for header sys/ioctl.h
@@ -1063,12 +1096,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_865d809b42323327dc1e5b7d7bd5d318/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_329ca7d8e5c9508784d9c18a695add6e/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_865d809b42323327dc1e5b7d7bd5d318/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_865d809b42323327dc1e5b7d7bd5d318/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_329ca7d8e5c9508784d9c18a695add6e/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_329ca7d8e5c9508784d9c18a695add6e/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_865d809b42323327dc1e5b7d7bd5d318/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_329ca7d8e5c9508784d9c18a695add6e/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header net/if.h
@@ -1081,12 +1114,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_f9258f1e33fb948c8fb17fbaa303b1b0/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_9aa3adc836d16d8c55ca7070d38ee96b/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_f9258f1e33fb948c8fb17fbaa303b1b0/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_f9258f1e33fb948c8fb17fbaa303b1b0/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_9aa3adc836d16d8c55ca7070d38ee96b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_9aa3adc836d16d8c55ca7070d38ee96b/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_f9258f1e33fb948c8fb17fbaa303b1b0/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_9aa3adc836d16d8c55ca7070d38ee96b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header net/ethernet.h
@@ -1099,12 +1132,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_9a599c0c41ab46e6053e595c8a747c1a/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_5d5498ec2d492c6ae2d20e7afa0b02d3/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_9a599c0c41ab46e6053e595c8a747c1a/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_9a599c0c41ab46e6053e595c8a747c1a/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_5d5498ec2d492c6ae2d20e7afa0b02d3/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_5d5498ec2d492c6ae2d20e7afa0b02d3/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_9a599c0c41ab46e6053e595c8a747c1a/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_5d5498ec2d492c6ae2d20e7afa0b02d3/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header linux/if_tun.h
@@ -1117,12 +1150,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_f5bfcdbb73fd3944f5f5de353b125a49/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_e5fcac65a61786fda692c8e76bb887b4/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_f5bfcdbb73fd3944f5f5de353b125a49/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_f5bfcdbb73fd3944f5f5de353b125a49/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_e5fcac65a61786fda692c8e76bb887b4/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_e5fcac65a61786fda692c8e76bb887b4/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_f5bfcdbb73fd3944f5f5de353b125a49/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_e5fcac65a61786fda692c8e76bb887b4/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header netpacket/packet.h
@@ -1135,12 +1168,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_2291de7441408b86c471e6872303310d/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_7abeea7e2c017540275565dd81846e78/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_2291de7441408b86c471e6872303310d/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_2291de7441408b86c471e6872303310d/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_7abeea7e2c017540275565dd81846e78/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_7abeea7e2c017540275565dd81846e78/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_2291de7441408b86c471e6872303310d/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_7abeea7e2c017540275565dd81846e78/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for NSC location
@@ -1154,7 +1187,7 @@ to the PKG_CONFIG_PATH environment variable
 No package 'sqlite3' found
 
 not found
-from /home/mansi/Desktop/ns-3-dev/src/stats: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/src/stats: The configuration failed
 ------------------------------------------------------------------
 Checking for header linux/if_tun.h
 ==>
@@ -1166,31 +1199,31 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_f5bfcdbb73fd3944f5f5de353b125a49/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_e5fcac65a61786fda692c8e76bb887b4/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_f5bfcdbb73fd3944f5f5de353b125a49/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_f5bfcdbb73fd3944f5f5de353b125a49/testbuild/testprog[0m
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_e5fcac65a61786fda692c8e76bb887b4/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_e5fcac65a61786fda692c8e76bb887b4/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_f5bfcdbb73fd3944f5f5de353b125a49/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_e5fcac65a61786fda692c8e76bb887b4/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 (tool boost is already loaded, skipping)
 ------------------------------------------------------------------
 Checking boost includes
 headers not found, please provide a --boost-includes argument (see help)
-from /home/mansi/Desktop/ns-3-dev/contrib: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/contrib: The configuration failed
 ------------------------------------------------------------------
 Checking boost includes
 headers not found, please provide a --boost-includes argument (see help)
-from /home/mansi/Desktop/ns-3-dev/contrib: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3/contrib: The configuration failed
 ------------------------------------------------------------------
 Checking for program 'sudo'
 /usr/bin/sudo
-find program=['sudo'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='SUDO' -> ['/usr/bin/sudo']
+find program=['sudo'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='SUDO' -> ['/usr/bin/sudo']
 ------------------------------------------------------------------
 Checking for program 'valgrind'
 not found
-find program=['valgrind'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='VALGRIND' -> None
-from /home/mansi/Desktop/ns-3-dev: Could not find the program ['valgrind']
+find program=['valgrind'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='VALGRIND' -> None
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3: Could not find the program ['valgrind']
 ------------------------------------------------------------------
 Checking for 'gsl'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'gsl']
@@ -1200,68 +1233,68 @@ to the PKG_CONFIG_PATH environment variable
 No package 'gsl' found
 
 not found
-from /home/mansi/Desktop/ns-3-dev: The configuration failed
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3: The configuration failed
 ------------------------------------------------------------------
 python-config
 not found
-find program=['libgcrypt-config'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='LIBGCRYPT_CONFIG' -> None
-from /home/mansi/Desktop/ns-3-dev: Could not find the program ['libgcrypt-config']
+find program=['libgcrypt-config'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='LIBGCRYPT_CONFIG' -> None
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3: Could not find the program ['libgcrypt-config']
 ------------------------------------------------------------------
 Checking for compilation flag -Wno-error=deprecated-d... support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_795a703f402728d610a1a054f4995186/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_48ed471a1718592c90d610f5959b7951/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_795a703f402728d610a1a054f4995186/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_48ed471a1718592c90d610f5959b7951/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -Wno-error=deprecated-d... support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_92ea75f7b0f4501d66e5c6b19829fda8/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_0a24fa18d71997eb5f7a830e5b04b90e/test.c[0m
 
-['/usr/bin/gcc', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_92ea75f7b0f4501d66e5c6b19829fda8/testbuild/test.c.1.o']
+['/usr/bin/gcc', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_0a24fa18d71997eb5f7a830e5b04b90e/testbuild/test.c.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -fstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_795a703f402728d610a1a054f4995186/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_48ed471a1718592c90d610f5959b7951/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_795a703f402728d610a1a054f4995186/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_48ed471a1718592c90d610f5959b7951/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -fstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_92ea75f7b0f4501d66e5c6b19829fda8/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_0a24fa18d71997eb5f7a830e5b04b90e/test.c[0m
 
-['/usr/bin/gcc', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_92ea75f7b0f4501d66e5c6b19829fda8/testbuild/test.c.1.o']
+['/usr/bin/gcc', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_0a24fa18d71997eb5f7a830e5b04b90e/testbuild/test.c.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -Wstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_795a703f402728d610a1a054f4995186/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_48ed471a1718592c90d610f5959b7951/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_795a703f402728d610a1a054f4995186/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_48ed471a1718592c90d610f5959b7951/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -Wstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_92ea75f7b0f4501d66e5c6b19829fda8/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_0a24fa18d71997eb5f7a830e5b04b90e/test.c[0m
 
-['/usr/bin/gcc', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/mansi/Desktop/ns-3-dev/build/.conf_check_92ea75f7b0f4501d66e5c6b19829fda8/testbuild/test.c.1.o']
+['/usr/bin/gcc', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/mansi/Desktop/Implementation-of-CARED-in-ns3/build/.conf_check_0a24fa18d71997eb5f7a830e5b04b90e/testbuild/test.c.1.o']
 ok
 ------------------------------------------------------------------
 Checking for program 'doxygen'
 not found
-find program=['doxygen'] paths=['/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='DOXYGEN' -> None
-from /home/mansi/Desktop/ns-3-dev: Could not find the program ['doxygen']
+find program=['doxygen'] paths=['/home/mansi/anaconda3/bin', '/home/mansi/anaconda2/bin', '/home/mansi/bin', '/home/mansi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='DOXYGEN' -> None
+from /home/mansi/Desktop/Implementation-of-CARED-in-ns3: Could not find the program ['doxygen']

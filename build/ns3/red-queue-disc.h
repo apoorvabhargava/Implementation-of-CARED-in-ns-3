@@ -108,18 +108,6 @@ public:
       Below,        //!< When m_qAvg < m_minTh
     };
 
-  /**
-   * \brief Stats
-   */
-  typedef struct
-  {   
-    uint32_t unforcedDrop;  //!< Early probability drops
-    uint32_t forcedDrop;    //!< Forced drops, m_qAvg > m_maxTh
-    uint32_t qLimDrop;      //!< Drops due to queue limits
-    uint32_t unforcedMark;  //!< Early probability marks
-    uint32_t forcedMark;    //!< Forced marks, m_qAvg > m_maxTh
-  } Stats;
-
   /** 
    * \brief Drop types
    */
@@ -232,13 +220,6 @@ public:
    */
   void SetTh (double minTh, double maxTh);
 
-  /**
-   * \brief Get the RED statistics after running.
-   *
-   * \returns The drop statistics.
-   */
-  Stats GetStats ();
-
  /**
   * Assign a fixed random variable stream number to the random variables
   * used by this model.  Return the number of streams (possibly zero) that
@@ -248,6 +229,13 @@ public:
   * \return the number of stream indices assigned by this model
   */
   int64_t AssignStreams (int64_t stream);
+
+  // Reasons for dropping packets
+  static constexpr const char* UNFORCED_DROP = "Unforced drop";  //!< Early probability drops
+  static constexpr const char* FORCED_DROP = "Forced drop";      //!< Forced drops, m_qAvg > m_maxTh
+  // Reasons for marking packets
+  static constexpr const char* UNFORCED_MARK = "Unforced mark";  //!< Early probability marks
+  static constexpr const char* FORCED_MARK = "Forced mark";      //!< Forced marks, m_qAvg > m_maxTh
 
 protected:
   /**
@@ -295,6 +283,13 @@ private:
    * \param qSize queue size
    * \returns 0 for no drop/mark, 1 for drop
    */
+  void UpdateMaxPCautious (double newAve);
+  /**
+   * \brief Check if a packet needs to be dropped due to probability mark
+   * \param item queue item
+   * \param qSize queue size
+   * \returns 0 for no drop/mark, 1 for drop
+   */
   uint32_t DropEarly (Ptr<QueueDiscItem> item, uint32_t qSize);
   /**
    * \brief Returns a probability using these function parameters for the DropEarly function
@@ -308,8 +303,6 @@ private:
    * \returns Prob. of packet drop
    */
   double ModifyP (double p, uint32_t size);
-
-  Stats m_stats; //!< RED statistics
 
   // ** Variables supplied by user
   QueueDiscMode m_mode;     //!< Mode (Bytes or packets)
@@ -333,6 +326,7 @@ private:
   Time m_rtt;               //!< Rtt to be considered while automatically setting m_bottom in ARED
   bool m_isFengAdaptive;    //!< True to enable Feng's Adaptive RED
   bool m_isNonlinear;       //!< True to enable Nonlinear RED
+  bool m_isCARED;           //!< True to enable Cautious Adaptive RED
   double m_b;               //!< Increment parameter for m_curMaxP in Feng's Adaptive RED
   double m_a;               //!< Decrement parameter for m_curMaxP in Feng's Adaptive RED
   bool m_isNs1Compat;       //!< Ns-1 compatibility

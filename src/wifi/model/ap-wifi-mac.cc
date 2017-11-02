@@ -55,7 +55,7 @@ ApWifiMac::GetTypeId (void)
                    MakePointerChecker<UniformRandomVariable> ())
     .AddAttribute ("EnableBeaconJitter",
                    "If beacons are enabled, whether to jitter the initial send event.",
-                   BooleanValue (false),
+                   BooleanValue (true),
                    MakeBooleanAccessor (&ApWifiMac::m_enableBeaconJitter),
                    MakeBooleanChecker ())
     .AddAttribute ("BeaconGeneration",
@@ -181,13 +181,6 @@ ApWifiMac::SetBeaconInterval (Time interval)
       NS_LOG_WARN ("beacon interval should be multiple of 1024us (802.11 time unit), see IEEE Std. 802.11-2012");
     }
   m_beaconInterval = interval;
-}
-
-void
-ApWifiMac::StartBeaconing (void)
-{
-  NS_LOG_FUNCTION (this);
-  SendOneBeacon ();
 }
 
 int64_t
