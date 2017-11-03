@@ -37,4 +37,5 @@ build-dir/
 build/
 /.cproject
 /.project
-bindings/
+
+.lock-waf_linux_build
