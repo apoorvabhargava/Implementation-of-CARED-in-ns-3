@@ -5,7 +5,7 @@
 ## Assignment: #GP1
 
 ### Overview
-Cautious Adaptive RED (CARED) [1] is a two-in-one AQM algorithm that provides advantages of Adaptive RED (ARED) [2] and Refined Adaptive RED (RARED) [3]. The original paper of CARED [1] used ns-2 [4] for comparing its performance against ARED and RARED. However, till date the implementation of CARED is not publicly available in any network simulator. This repository provides an implementation of CARED algorithm in ns-3 [5].
+Cautious Adaptive RED (CARED) [1] is a two-in-one AQM algorithm that provides advantages of Adaptive RED (ARED) [2] and Refined Adaptive RED (RARED) [3]. The original paper of CARED used ns-2 [4] for comparing its performance against ARED and RARED. However, till date the implementation of CARED is not publicly available in any network simulator. This repository provides an implementation of CARED algorithm in ns-3 [5].
 
 ### CARED example	<br/>
 
