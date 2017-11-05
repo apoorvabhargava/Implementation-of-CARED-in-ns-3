@@ -47,6 +47,20 @@ NLRED is a variant of RED in which the linear packet dropping function of
 RED is replaced by a nonlinear quadratic function. This approach makes packet
 dropping gentler for light traffic load and aggressive for heavy traffic load.
 
+Refined Adaptive Random Early Detection (RARED)
+========================================
+RARED is a variant of RED that aims at improving the performance of ARED
+by bringing the average queue size closer to its target value more quickly. 
+The model in ns-3 contains implementation of above feature which is a part of T. Kim and 
+K. Lee ns-2 RARED model.
+
+Cautious Adaptive Random Early Detection (CARED)
+========================================
+CARED is a variant of RED that combines the advantages of both ARED as well as Re-ARED and 
+hence provides robust performance in a wide range of environments. Since CARED algorithm 
+does not introduce new parameters to achieve performance gain, it can be deployed without any 
+additional complexity.
+
 Explicit Congestion Notification (ECN)
 ======================================
 This RED model supports an ECN mode of operation to notify endpoints of
@@ -81,6 +95,12 @@ W. C. Feng et al, http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=752150
 
 NLRED queue implementation is based on the algorithm provided in:
 Kaiyu Zhou et al, http://www.sciencedirect.com/science/article/pii/S1389128606000879
+
+RARED queue implementation is based on the algorithm provided in:
+T. Kim, K. Lee, http://ieeexplore.ieee.org/document/4108421/?reload=true&arnumber=4108421
+
+CARED queue implementation is based on the algorithm provided in:
+Tahiliani, M. P., Shet, K. C., & Basavaraju, T. G., http://www.sciencedirect.com/science/article/pii/S1084804511002359
 
 The addition of explicit congestion notification (ECN) to IP:
 K. K. Ramakrishnan et al, https://tools.ietf.org/html/rfc3168
@@ -129,6 +149,16 @@ attributes:
 The following attribute should be turned on to simulate NLRED queue disc:
 
 * NLRED (Boolean attribute. Default: false)
+
+In addition to RED and ARED attributes, RARED queue requires following attribute:
+
+* RARED (Boolean attribute. Default: false)
+
+In addition to RED and ARED attributes, CARED queue requires following attribute:
+
+* CARED (Boolean attribute. Default: false)
+
+
 
 Consult the ns-3 documentation for explanation of these attributes.
 
@@ -184,6 +214,26 @@ as shown below:
 
   Config::SetDefault ("ns3::RedQueueDisc::NLRED", BooleanValue (true));
 
+Simulating RARED
+===============
+
+To switch on RARED algorithm, the attribute RARED must be set to true,
+as done in ``src/traffic-control/examples/adaptive-red-variants.cc``:
+
+.. sourcecode:: cpp
+
+  Config::SetDefault ("ns3::RedQueueDisc::RARED", BooleanValue (true));
+
+Simulating CARED
+===============
+
+To switch on CARED algorithm, the attribute CARED must be set to true,
+as done in ``src/traffic-control/examples/adaptive-red-variants.cc``:
+
+.. sourcecode:: cpp
+
+  Config::SetDefault ("ns3::RedQueueDisc::CARED", BooleanValue (true));
+
 Examples
 ========
 
@@ -198,6 +248,9 @@ Feng's Adaptive RED example can be found at:
 
 NLRED queue example can be found at:
 ``examples/traffic-control/red-vs-nlred.cc``
+
+RARED and CARED queue example can be found at:
+``src/traffic-control/examples/adaptive-red-variants.cc``
 
 Validation
 **********
