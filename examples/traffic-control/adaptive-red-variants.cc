@@ -47,7 +47,7 @@ int main (int argc, char *argv[])
   double      maxTh = 15;
   uint32_t    pktSize = 512;
   std::string appDataRate = "10Mbps";
-  std::string queueDiscType = "RED";
+  std::string queueDiscType = "ARED";
   uint16_t port = 5001;
   std::string bottleNeckLinkBw = "1Mbps";
   std::string bottleNeckLinkDelay = "50ms";
@@ -65,16 +65,16 @@ int main (int argc, char *argv[])
   cmd.AddValue ("redMaxTh", "RED queue maximum threshold", maxTh);
   cmd.Parse (argc,argv);
 
-  if ((queueDiscType != "RED") && (queueDiscType != "ARED") && (queueDiscType != "RARED") && (queueDiscType != "CARED"))
+  if ((queueDiscType != "ARED") && (queueDiscType != "RARED") && (queueDiscType != "CARED"))
     {
-      std::cout << "Invalid queue disc type: Use --queueDiscType=RED or --queueDiscType=ARED or --queueDiscType=ARED or --queueDiscType=CARED" << std::endl;
+      std::cout << "Invalid queue disc type: Use --queueDiscType=ARED or --queueDiscType=RARED or --queueDiscType=CARED" << std::endl;
       exit (1);
     }
 
   Config::SetDefault ("ns3::OnOffApplication::PacketSize", UintegerValue (pktSize));
   Config::SetDefault ("ns3::OnOffApplication::DataRate", StringValue (appDataRate));
 
- Config::SetDefault ("ns3::QueueBase::Mode", StringValue ("QUEUE_MODE_PACKETS"));
+  Config::SetDefault ("ns3::QueueBase::Mode", StringValue ("QUEUE_MODE_PACKETS"));
   Config::SetDefault ("ns3::QueueBase::MaxPackets", UintegerValue (maxPackets));
 
   if (!modeBytes)
