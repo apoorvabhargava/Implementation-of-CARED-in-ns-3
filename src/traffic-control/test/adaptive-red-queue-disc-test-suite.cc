@@ -1,6 +1,6 @@
 /* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
 /*
- * Copyright (c) 2015 NITK Surathkal
+ * Copyright (c) 2017 NITK Surathkal
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -348,6 +348,40 @@ AredQueueDiscTestCase::RunAredDiscTest (StringValue mode)
   st = queue->GetStats ();
   uint32_t test10 = st.GetNDroppedPackets (RedQueueDisc::UNFORCED_DROP);
   NS_TEST_EXPECT_MSG_LT (test10, test9, "Test 10 should have less unforced drops than test 9");
+
+
+  // test 11: Refined Adaptive RED (automatic and adaptive settings enabled)
+  queue = CreateObject<RedQueueDisc> ();
+  NS_TEST_EXPECT_MSG_EQ (queue->SetAttributeFailSafe ("Mode", mode), true,
+                         "Verify that we can actually set the attribute Mode");
+  NS_TEST_EXPECT_MSG_EQ (queue->SetAttributeFailSafe ("QueueLimit", UintegerValue (qSize)), true,
+                         "Verify that we can actually set the attribute QueueLimit");
+  NS_TEST_EXPECT_MSG_EQ (queue->SetAttributeFailSafe ("RARED", BooleanValue (true)), true,
+                         "Verify that we can actually set the attribute RARED");
+  queue->Initialize ();
+  EnqueueWithDelay (queue, pktSize, 300);
+  Simulator::Stop (Seconds (5));
+  Simulator::Run ();
+  st = queue->GetStats ();
+  uint32_t test11 = st.GetNDroppedPackets (RedQueueDisc::UNFORCED_DROP);
+  NS_TEST_EXPECT_MSG_LT (test11, test9, "Test 11 should have less unforced drops than test 9");
+ 
+  
+  // test 12: Cautious Adaptive RED (automatic and adaptive settings enabled)
+  queue = CreateObject<RedQueueDisc> ();
+  NS_TEST_EXPECT_MSG_EQ (queue->SetAttributeFailSafe ("Mode", mode), true,
+                         "Verify that we can actually set the attribute Mode");
+  NS_TEST_EXPECT_MSG_EQ (queue->SetAttributeFailSafe ("QueueLimit", UintegerValue (qSize)), true,
+                         "Verify that we can actually set the attribute QueueLimit");
+  NS_TEST_EXPECT_MSG_EQ (queue->SetAttributeFailSafe ("CARED", BooleanValue (true)), true,
+                         "Verify that we can actually set the attribute RARED");
+  queue->Initialize ();
+  EnqueueWithDelay (queue, pktSize, 300);
+  Simulator::Stop (Seconds (5));
+  Simulator::Run ();
+  st = queue->GetStats ();
+  uint32_t test12 = st.GetNDroppedPackets (RedQueueDisc::UNFORCED_DROP);
+  NS_TEST_EXPECT_MSG_LT (test12, test9, "Test 12 should have less unforced drops than test 9");
 }
 
 void

@@ -109,6 +109,16 @@ TypeId RedQueueDisc::GetTypeId (void)
                    BooleanValue (false),
                    MakeBooleanAccessor (&RedQueueDisc::m_isARED),
                    MakeBooleanChecker ())
+    .AddAttribute ("RARED",
+                   "True to enable Refined Adaptive RED",
+                   BooleanValue (false),
+                   MakeBooleanAccessor (&RedQueueDisc::m_isRARED),
+                   MakeBooleanChecker ())
+    .AddAttribute ("CARED",
+                   "True to enable Cautious Adaptive RED",
+                   BooleanValue (false),
+                   MakeBooleanAccessor (&RedQueueDisc::m_isCARED),
+                   MakeBooleanChecker ())
     .AddAttribute ("AdaptMaxP",
                    "True to adapt m_curMaxP",
                    BooleanValue (false),
@@ -123,11 +133,6 @@ TypeId RedQueueDisc::GetTypeId (void)
                    "True to enable Nonlinear RED",
                    BooleanValue (false),
                    MakeBooleanAccessor (&RedQueueDisc::m_isNonlinear),
-                   MakeBooleanChecker ())
-    .AddAttribute ("CARED",
-                   "True to enable CARED",
-                   BooleanValue (false),
-                   MakeBooleanAccessor (&RedQueueDisc::m_isCARED),
                    MakeBooleanChecker ())
     .AddAttribute ("MinTh",
                    "Minimum average length threshold in packets/bytes",
@@ -501,7 +506,7 @@ RedQueueDisc::InitializeParams (void)
   m_cautious = 0;
   m_ptc = m_linkBandwidth.GetBitRate () / (8.0 * m_meanPktSize);
 
-  if (m_isARED)
+  if (m_isARED || m_isRARED || m_isCARED)
     {
       // Set m_minTh, m_maxTh and m_qW to zero for automatic setting
       m_minTh = 0;
@@ -516,14 +521,6 @@ RedQueueDisc::InitializeParams (void)
     {
       // Initialize m_fengStatus
       m_fengStatus = Above;
-    }
-
-  if (m_isCARED)
-    {
-      // Set m_minTh, m_maxTh and m_qW to zero for automatic setting
-      m_minTh = 0;
-      m_maxTh = 0;
-      m_qW = 0;
     }
 
   if (m_minTh == 0 && m_maxTh == 0)
@@ -655,71 +652,49 @@ RedQueueDisc::UpdateMaxP (double newAve)
   NS_LOG_FUNCTION (this << newAve);
 
   Time now = Simulator::Now ();
-  double m_part = 0.4 * (m_maxTh - m_minTh);
+  double m_part = 0;
+
+  if (m_isRARED)
+    {
+      m_part = 0.48 * (m_maxTh - m_minTh);
+    }
+  else
+    {
+      m_part = 0.4 * (m_maxTh - m_minTh);
+    }
+
   // AIMD rule to keep target Q~1/2(m_minTh + m_maxTh)
   if (newAve < m_minTh + m_part && m_curMaxP > m_bottom)
     {
       // we should increase the average queue size, so decrease m_curMaxP
-      m_curMaxP = m_curMaxP * m_beta;
+      double beta = 0;
+      if (m_isRARED || (m_isCARED && newAve <= m_oldAvg))
+        {
+          beta = 1 - (0.17 * (((m_minTh + m_part) - newAve) / ((m_minTh + m_part) - m_minTh)));
+        }
+      else
+        {
+          beta = m_beta;
+        }
+      m_curMaxP = m_curMaxP * beta;
       m_lastSet = now;
     }
   else if (newAve > m_maxTh - m_part && m_top > m_curMaxP)
     {
       // we should decrease the average queue size, so increase m_curMaxP
-      double alpha = m_alpha;
-      if (alpha > 0.25 * m_curMaxP)
+      double alpha = 0;
+      if (m_isRARED || (m_isCARED && newAve > m_oldAvg))
         {
-          alpha = 0.25 * m_curMaxP;
+          alpha = 0.25 * ((newAve - (m_maxTh - m_part)) / (m_maxTh - m_part)) * m_curMaxP;
+        }
+      else
+        {
+          alpha = m_alpha;
         }
       m_curMaxP = m_curMaxP + alpha;
       m_lastSet = now;
     }
-}
-
-// Update m_curMaxP to keep the average queue size near the specified target queue size
-void
-RedQueueDisc::UpdateMaxPCautious (double newAve)
-{
-  NS_LOG_FUNCTION (this << newAve);
-
-  Time now = Simulator::Now ();
-  double part_low = m_minTh + 0.4 * (m_maxTh - m_minTh);
-  double part_up  = m_minTh + 0.6 * (m_maxTh - m_minTh);
-  if(newAve < part_low && m_curMaxP > m_bottom)
-  {
-     if(newAve > m_old)
-     {
-        m_curMaxP = m_curMaxP * m_beta;
-        m_lastSet = now;
-     }
-     else if(newAve < m_old)
-     {
-        m_beta = 1 - (0.17 * (( part_low - newAve) / ( part_low - m_minTh)));
-        m_curMaxP = m_curMaxP * m_beta;
-        m_lastSet = now;
-     }
-  }
-
-  else if (newAve > part_up && m_top >= m_curMaxP)
-  {
-    if(newAve > m_old)
-    {
-       double alpha = m_alpha;
-       alpha = 0.25 * ((newAve - part_up) / part_up) * m_curMaxP;
-       m_curMaxP = m_curMaxP + alpha;
-       m_lastSet = now;
-    }
-    else if(newAve < m_old)
-    {
-       double alpha = m_alpha;
-       if (alpha > 0.25 * m_curMaxP)
-       {
-         alpha = std::min (m_bottom , 0.25 * m_curMaxP);
-       }
-       m_curMaxP = m_curMaxP + alpha;
-       m_lastSet = now;  
-    }
-  }
+   m_oldAvg = newAve;  
 }
 
 // Compute the average queue size
@@ -740,10 +715,7 @@ RedQueueDisc::Estimator (uint32_t nQueued, uint32_t m, double qAvg, double qW)
     {
       UpdateMaxPFeng (newAve);  // Update m_curMaxP in MIMD fashion.
     }
-  else if (m_isCARED && now > m_lastSet + m_interval)
-    {
-      UpdateMaxPCautious (newAve);
-    }
+
   return newAve;
 }
 
@@ -1021,12 +993,10 @@ RedQueueDisc::CheckConfig (void)
       return false;
     }
 
-  if (((m_isARED || m_isAdaptMaxP) && (m_isFengAdaptive || m_isCARED)) || (m_isFengAdaptive && m_isCARED))
+  if (((m_isARED && (m_isRARED || m_isCARED)) || (m_isRARED && m_isCARED)) || ((m_isARED || m_isAdaptMaxP || m_isRARED || m_isCARED) && m_isFengAdaptive))
     {
-      NS_LOG_ERROR ("m_isAdaptMaxP, m_isFengAdaptive and m_CARED cannot be simultaneously true");
+      NS_LOG_ERROR ("m_isARED, m_isRARED, m_isCARED and m_isFengAdaptive cannot be simultaneously true");
     }
-
-
 
   return true;
 }

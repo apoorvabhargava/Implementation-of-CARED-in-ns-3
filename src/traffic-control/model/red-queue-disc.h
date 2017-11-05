@@ -283,13 +283,6 @@ private:
    * \param qSize queue size
    * \returns 0 for no drop/mark, 1 for drop
    */
-  void UpdateMaxPCautious (double newAve);
-  /**
-   * \brief Check if a packet needs to be dropped due to probability mark
-   * \param item queue item
-   * \param qSize queue size
-   * \returns 0 for no drop/mark, 1 for drop
-   */
   uint32_t DropEarly (Ptr<QueueDiscItem> item, uint32_t qSize);
   /**
    * \brief Returns a probability using these function parameters for the DropEarly function
@@ -311,6 +304,8 @@ private:
   bool m_isWait;            //!< True for waiting between dropped packets
   bool m_isGentle;          //!< True to increase dropping prob. slowly when m_qAvg exceeds m_maxTh
   bool m_isARED;            //!< True to enable Adaptive RED
+  bool m_isRARED;           //!< True to enable Refined Adaptive RED
+  bool m_isCARED;           //!< True to enable Cautious Adaptive RED
   bool m_isAdaptMaxP;       //!< True to adapt m_curMaxP
   double m_minTh;           //!< Minimum threshold for m_qAvg (bytes or packets)
   double m_maxTh;           //!< Maximum threshold for m_qAvg (bytes or packets), should be >= 2 * m_minTh
@@ -326,7 +321,6 @@ private:
   Time m_rtt;               //!< Rtt to be considered while automatically setting m_bottom in ARED
   bool m_isFengAdaptive;    //!< True to enable Feng's Adaptive RED
   bool m_isNonlinear;       //!< True to enable Nonlinear RED
-  bool m_isCARED;           //!< True to enable Cautious Adaptive RED
   double m_b;               //!< Increment parameter for m_curMaxP in Feng's Adaptive RED
   double m_a;               //!< Decrement parameter for m_curMaxP in Feng's Adaptive RED
   bool m_isNs1Compat;       //!< Ns-1 compatibility
@@ -341,6 +335,7 @@ private:
   double m_vC;              //!< (1.0 - m_curMaxP) / m_maxTh - used in "gentle" mode
   double m_vD;              //!< 2.0 * m_curMaxP - 1.0 - used in "gentle" mode
   double m_curMaxP;         //!< Current max_p
+  double m_oldAvg;          //!< Old value of average queue size
   Time m_lastSet;           //!< Last time m_curMaxP was updated
   double m_vProb;           //!< Prob. of packet drop
   uint32_t m_countBytes;    //!< Number of bytes since last drop
