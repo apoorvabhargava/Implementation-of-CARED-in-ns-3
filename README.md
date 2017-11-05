@@ -11,7 +11,7 @@ Cautious Adaptive RED (CARED) [1] is a two-in-one AQM algorithm that provides ad
 
 An example program for CARED has been provided in
 
-`src/traffic-control/examples/adaptive-red-variants.cc`
+`examples/traffic-control/adaptive-red-variants.cc`
 
 and should be executed as
 
